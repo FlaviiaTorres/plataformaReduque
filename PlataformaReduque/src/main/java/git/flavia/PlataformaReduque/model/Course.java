@@ -8,19 +8,24 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Data
 @Entity
 public class Course {
-    @Id
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String title;
     private String description;
-    private String instructor;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
+    private User instructor;
+
+    @OneToMany(mappedBy = "course")
     private List<Lesson> lessons;
 }
