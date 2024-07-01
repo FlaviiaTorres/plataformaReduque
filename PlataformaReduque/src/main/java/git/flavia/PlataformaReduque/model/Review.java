@@ -17,7 +17,7 @@ public class Review {
     private Long id;
 
     @ManyToOne
-    private User student;
+    private Student student;
 
     @ManyToOne
     private Course course;

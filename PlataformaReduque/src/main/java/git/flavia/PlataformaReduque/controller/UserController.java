@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import git.flavia.PlataformaReduque.model.User;
+import git.flavia.PlataformaReduque.model.Student;
 import git.flavia.PlataformaReduque.service.UserService;
 
 @RestController
@@ -23,26 +23,31 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<Student> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
+    @GetMapping("/byUser/{id}")
+    public Student getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
+    }
+    
+    @GetMapping("/byName/{name}")
+    public Student getUserByUserName(@PathVariable String name) {
+        return userService.getUserByName(name);
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
+    public Student createUser(@RequestBody Student user) {
         return userService.createUser(user);
     }
 
-    @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+    @PutMapping("/updateUser/{id}")
+    public Student updateUser(@PathVariable Long id, @RequestBody Student user) {
         return userService.updateUser(id, user);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteUser/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }

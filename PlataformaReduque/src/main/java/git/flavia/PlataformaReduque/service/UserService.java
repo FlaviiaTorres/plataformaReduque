@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import git.flavia.PlataformaReduque.model.User;
+import git.flavia.PlataformaReduque.model.Student;
 import git.flavia.PlataformaReduque.repository.UserRepository;
 
 @Service
@@ -14,24 +14,29 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> getAllUsers() {
+    public List<Student> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) {
+    public Student getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User createUser(User user) {
+    public Student getUserByName(String name) {
+        return userRepository.findByName(name);
+    }
+    
+    public Student createUser(Student user) {
         return userRepository.save(user);
     }
 
-    public User updateUser(Long id, User updatedUser) {
+    public Student updateUser(Long id, Student updatedUser) {
         return userRepository.findById(id)
             .map(user -> {
-                user.setUsername(updatedUser.getUsername());
+                user.setName(updatedUser.getName());
+                user.setSurname(updatedUser.getSurname());
+                user.setEmail(updatedUser.getEmail());
                 user.setPassword(updatedUser.getPassword());
-                user.setRole(updatedUser.getRole());
                 return userRepository.save(user);
             })
             .orElse(null);

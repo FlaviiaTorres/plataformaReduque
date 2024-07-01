@@ -23,7 +23,7 @@ public class Course {
     private String description;
 
     @ManyToOne
-    private User instructor;
+    private Student instructor;
 
     @OneToMany(mappedBy = "course")
     private List<Lesson> lessons;
