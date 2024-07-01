@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import git.flavia.PlataformaReduque.model.Instructor;
-import git.flavia.PlataformaReduque.model.Student;
+
 import git.flavia.PlataformaReduque.service.InstructorService;
-import git.flavia.PlataformaReduque.service.StudentService;
+
 
 @RestController
 @RequestMapping("/instructor")
@@ -35,8 +35,8 @@ public class InstructorController {
     }
     
     @GetMapping("/byName/{name}")
-    public Instructor getUserByInstructorName(@PathVariable String name) {
-        return instructorService.getInstructorByName(name);
+    public Instructor getUserByInstructorName(@PathVariable String nameInstructor) {
+        return instructorService.getInstructorByName(nameInstructor);
     }
 
     @PostMapping

@@ -23,8 +23,8 @@ public class InstructorService {
 	        return instructorRepository.findById(id).orElse(null);
 	    }
 
-	    public Instructor getInstructorByName(String name) {
-	        return instructorRepository.findByName(name);
+	    public Instructor getInstructorByName(String nameInstructor) {
+	        return instructorRepository.findByName(nameInstructor);
 	    }
 	    
 	    public Instructor createInstructor(Instructor instructor) {

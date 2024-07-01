@@ -6,6 +6,6 @@ import git.flavia.PlataformaReduque.model.Instructor;
 
 public interface InstructorRepository extends JpaRepository<Instructor, Long>{
 
-	Instructor findByName(String name);
+	Instructor findByName(String nameInstructor);
 
 }
